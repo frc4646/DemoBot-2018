@@ -13,7 +13,7 @@
 using namespace frc;
 using namespace wpi;
 
-OI::OI() : leftStick(0), rightStick(1), mechStick(2) {
+OI::OI() : leftStick(0), rightStick(1), mechStick(2), gamepad(3) {
 
 }
 double OI::getLeftStickY(){
@@ -24,4 +24,8 @@ double OI::getRightStickY(){
 }
 double OI::getMechStickY(){
 	return mechStick.GetRawAxis(1);
+}
+double OI::getGamepadTriggers()
+{
+	return gamepad.GetRawAxis(3);
 }

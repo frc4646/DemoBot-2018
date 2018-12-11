@@ -7,21 +7,15 @@
 
 #pragma once
 
-#include <frc/WPILib.h>
+#include <frc/commands/Command.h>
+#include <CommandBase.h>
 
-using namespace frc;
-
-class OI {
-private:
-	Joystick leftStick;
-	Joystick rightStick;
-	Joystick mechStick;
-	Joystick gamepad;
-	
-public:
-	OI();
-	double getLeftStickY();
-	double getRightStickY();
-	double getMechStickY();
-	double getGamepadTriggers();
+class BellRingTeleOp : public CommandBase {
+ public:
+  BellRingTeleOp();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
 };

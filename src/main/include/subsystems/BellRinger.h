@@ -7,21 +7,19 @@
 
 #pragma once
 
+#include <frc/commands/Subsystem.h>
+
 #include <frc/WPILib.h>
+#include <frc/Spark.h>
 
 using namespace frc;
 
-class OI {
-private:
-	Joystick leftStick;
-	Joystick rightStick;
-	Joystick mechStick;
-	Joystick gamepad;
-	
-public:
-	OI();
-	double getLeftStickY();
-	double getRightStickY();
-	double getMechStickY();
-	double getGamepadTriggers();
+class BellRinger : public frc::Subsystem {
+ private:
+  Spark bellRingerMotor;
+
+ public:
+  BellRinger();
+  void InitDefaultCommand() override;
+  void SetMotorSpeed(double speed);
 };

@@ -5,23 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "subsystems/BellRinger.h"
+#include "commands/BellRingTeleOp.h"
 
-#include <frc/WPILib.h>
+BellRinger::BellRinger() : Subsystem("BellRingerTeleOp"), bellRingerMotor(4) {}
 
-using namespace frc;
+void BellRinger::InitDefaultCommand() {
+   SetDefaultCommand(new BellRingTeleOp());
+}
 
-class OI {
-private:
-	Joystick leftStick;
-	Joystick rightStick;
-	Joystick mechStick;
-	Joystick gamepad;
-	
-public:
-	OI();
-	double getLeftStickY();
-	double getRightStickY();
-	double getMechStickY();
-	double getGamepadTriggers();
-};
+void BellRinger::SetMotorSpeed(double speed)
+{
+    bellRingerMotor.Set(speed);
+}
+
+// Put methods for controlling this subsystem
+// here. Call these from Commands.
