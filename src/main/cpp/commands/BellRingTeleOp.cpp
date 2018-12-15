@@ -19,7 +19,7 @@ void BellRingTeleOp::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void BellRingTeleOp::Execute() {
-  bellringer->SetMotorSpeed(oi->getGamepadTriggers());
+  bellringer->SetMotorSpeed(.75);//oi->getGamepadTriggers());
 }
 
 // Make this return true when this Command no longer needs to run execute()

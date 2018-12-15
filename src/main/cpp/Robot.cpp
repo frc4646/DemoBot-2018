@@ -12,6 +12,7 @@
 #include <frc/SmartDashboard/SmartDashboard.h>
 #include <frc/TimedRobot.h>
 #include <CommandBase.h>
+#include "RingBellAuto.h"
 
 using namespace frc;
 
@@ -64,6 +65,9 @@ public:
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand->Start();
 		}*/
+
+		m_autonomousCommand = new RingBellAuto();
+		m_autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic() override {
