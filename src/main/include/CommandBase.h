@@ -9,7 +9,7 @@
 
 #include "OI.h"
 
-#include <subsystems/DriveTrain.h>
+#include <subsystems/TalonDriveTrain.h>
 #include <subsystems/FlagWaver.h>
 #include <subsystems/BellRinger.h>
 
@@ -28,7 +28,7 @@ public:
 	static void init();
 
 	// Create a single static instance of all of your subsystems
-	static std::unique_ptr<DriveTrain> drivetrain;
+	static std::unique_ptr<TalonDriveTrain> drivetrain;
 	static std::unique_ptr<FlagWaver> flagwaver;
 	static std::unique_ptr<OI> oi;
 	static std::unique_ptr<BellRinger> bellringer;

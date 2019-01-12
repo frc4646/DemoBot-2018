@@ -8,7 +8,7 @@
 
 
 
-std::unique_ptr<DriveTrain> CommandBase::drivetrain = NULL;
+std::unique_ptr<TalonDriveTrain> CommandBase::drivetrain = NULL;
 std::unique_ptr<FlagWaver> CommandBase::flagwaver = NULL;
 std::unique_ptr<OI> CommandBase::oi = std::make_unique<OI>();
 std::unique_ptr<BellRinger> CommandBase::bellringer = NULL;
@@ -19,7 +19,7 @@ CommandBase::CommandBase(const std::string &name) :
 }
 
 void CommandBase::init() {
-	drivetrain.reset(new DriveTrain());
+	drivetrain.reset(new TalonDriveTrain());
 	//flagwaver.reset(new FlagWaver());
 	bellringer.reset(new BellRinger());
 
