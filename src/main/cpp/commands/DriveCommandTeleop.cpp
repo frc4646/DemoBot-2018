@@ -13,7 +13,7 @@ void DriveCommandTeleop::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveCommandTeleop::Execute() {
-	drivetrain->SetDriveTrainSpeed(oi->getLeftStickY(), oi->getRightStickY());
+	drivetrain->SetDriveTrainSpeed(oi->getLeftStickY(), -oi->getRightStickY());
 }
 
 // Make this return true when this Command no longer needs to run execute()
