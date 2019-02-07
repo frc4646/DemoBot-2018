@@ -44,7 +44,32 @@ def includeSrcInIncludeRoot = false
 def includeDesktopSupport = false
 
 model {
+
+ //test libusb
+ 
+    repositories{
+        libs(PrebuiltLibraries){
+            
+            libusb{
+                headers.srcDir new File(projectDir,"lib/pixy2/include/") 
+                binaries.withType(StaticLibraryBinary){
+                    staticLibraryFile = file(projectDir.getPath() + "/lib/pixy2/libusb-1.0.a")
+                }
+            }
+
+            pixy2{
+                headers.srcDir new File(projectDir,"lib/pixy2/include/") 
+                binaries.withType(StaticLibraryBinary){
+                    staticLibraryFile = file(projectDir.getPath() + "/lib/pixy2/libpixy2.a")
+                }
+            }
+        }
+    }
+    
+    // end test libusb
+
     components {
+    
         frcUserProgram(NativeExecutableSpec) {
             targetPlatform wpi.platforms.roborio
             if (includeDesktopSupport) {
@@ -64,6 +89,15 @@ model {
                 }
             }
 
+            binaries.all {
+                //WARNING it links the libraries in the reverse order listed here
+                lib library: 'pixy2', linkage: 'static'
+                lib library: 'libusb', linkage: 'static'
+                   linker.args '-Llib/pixy2 -lusb-1.0'
+                cppCompiler.args "-Llib/pixy2 -lusb-1.0 lib/pixy2/libusb-1.0.a"
+            }
+        
+            
             // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
             useLibrary(it, "wpilib")
             wpi.deps.vendor.cpp(it)

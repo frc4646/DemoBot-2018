@@ -10,6 +10,7 @@
 
 std::unique_ptr<DriveTrain> CommandBase::drivetrain = NULL;
 std::unique_ptr<FlagWaver> CommandBase::flagwaver = NULL;
+std::unique_ptr<PixyCamera> CommandBase::pixy = NULL;
 std::unique_ptr<OI> CommandBase::oi = std::make_unique<OI>();
 std::unique_ptr<BellRinger> CommandBase::bellringer = NULL;
 
@@ -22,5 +23,6 @@ void CommandBase::init() {
 	drivetrain.reset(new DriveTrain());
 	//flagwaver.reset(new FlagWaver());
 	bellringer.reset(new BellRinger());
+	pixy.reset(new PixyCamera());
 
 }

@@ -5,21 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/BellRinger.h"
-#include "commands/BellRingTeleOp.h"
+#pragma once
 
-BellRinger::BellRinger() : Subsystem("BellRingerTeleOp"), bellRingerMotor(4) {
-    
-}
+#include <frc/commands/Command.h>
+#include <CommandBase.h>
+#include <frc/WPILib.h>
 
-void BellRinger::InitDefaultCommand() {
-   SetDefaultCommand(new BellRingTeleOp());
-}
+using namespace frc;
+using namespace wpi;
 
-void BellRinger::SetMotorSpeed(double speed)
-{
-    bellRingerMotor.Set(speed);
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+class PixyDemoTrack : public CommandBase {
+  private:
+  int run;
+ public:
+  PixyDemoTrack();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+};

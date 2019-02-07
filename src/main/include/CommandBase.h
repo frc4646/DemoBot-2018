@@ -12,6 +12,7 @@
 #include <subsystems/DriveTrain.h>
 #include <subsystems/FlagWaver.h>
 #include <subsystems/BellRinger.h>
+#include <vision/PixyCamera.h>
 
 
 /**
@@ -30,6 +31,7 @@ public:
 	// Create a single static instance of all of your subsystems
 	static std::unique_ptr<DriveTrain> drivetrain;
 	static std::unique_ptr<FlagWaver> flagwaver;
+	static std::unique_ptr<PixyCamera> pixy;
 	static std::unique_ptr<OI> oi;
 	static std::unique_ptr<BellRinger> bellringer;
 };
